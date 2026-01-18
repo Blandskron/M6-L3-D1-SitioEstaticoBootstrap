@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Contacto OK{% endblock %}
+{% block h1 %}Contacto{% endblock %}
+{% block subtitle %}Validación exitosa{% endblock %}
+
+{% block content %}
+  <div class="alert alert-success">
+    Formulario validado correctamente.
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h2 class="h6">Datos recibidos</h2>
+      <ul class="mb-0">
+        <li><strong>Nombre:</strong> {{ data.nombre }}</li>
+        <li><strong>Email:</strong> {{ data.email }}</li>
+        <li><strong>Asunto:</strong> {{ data.asunto }}</li>
+        <li><strong>Mensaje:</strong> {{ data.mensaje }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-3">
+    <a class="btn btn-primary" href="{% url 'web:contacto' %}">Enviar otro</a>
+    <a class="btn btn-outline-secondary" href="{% url 'web:home' %}">Inicio</a>
+  </div>
+{% endblock %}

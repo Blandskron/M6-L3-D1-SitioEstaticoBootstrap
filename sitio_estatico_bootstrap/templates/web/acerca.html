@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Acerca{% endblock %}
+{% block h1 %}Acerca{% endblock %}
+{% block subtitle %}Página estática con listado simple{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <div class="card-body">
+      <h2 class="h5">Equipo</h2>
+      <ul class="mb-0">
+        {% for area in equipo %}
+          <li>{{ area }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}

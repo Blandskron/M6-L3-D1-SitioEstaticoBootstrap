@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Contacto{% endblock %}
+{% block h1 %}Contacto{% endblock %}
+{% block subtitle %}Formulario con validación en backend{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12 col-lg-7">
+      <div class="card">
+        <div class="card-body">
+          <form method="post" novalidate>
+            {% csrf_token %}
+
+            <!-- Errores generales -->
+            {% if form.non_field_errors %}
+              <div class="alert alert-danger">
+                {{ form.non_field_errors }}
+              </div>
+            {% endif %}
+
+            <div class="mb-3">
+              <label class="form-label">{{ form.nombre.label }}</label>
+              {{ form.nombre }}
+              {% if form.nombre.errors %}
+                <div class="text-danger small mt-1">{{ form.nombre.errors }}</div>
+              {% endif %}
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">{{ form.email.label }}</label>
+              {{ form.email }}
+              {% if form.email.errors %}
+                <div class="text-danger small mt-1">{{ form.email.errors }}</div>
+              {% endif %}
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">{{ form.asunto.label }}</label>
+              {{ form.asunto }}
+              {% if form.asunto.errors %}
+                <div class="text-danger small mt-1">{{ form.asunto.errors }}</div>
+              {% endif %}
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">{{ form.mensaje.label }}</label>
+              {{ form.mensaje }}
+              {% if form.mensaje.errors %}
+                <div class="text-danger small mt-1">{{ form.mensaje.errors }}</div>
+              {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-success">Enviar</button>
+            <a class="btn btn-outline-secondary" href="{% url 'web:home' %}">Volver</a>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-5">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="h6">Notas</h2>
+          <ul class="mb-0">
+            <li>Validación del formulario en backend (Django Forms).</li>
+            <li>CSRF habilitado con <code>{% templatetag openblock %} csrf_token {% templatetag closeblock %}</code>.</li>
+            <li>DRY: navbar/footer reutilizados por includes.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

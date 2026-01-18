@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+{% block h1 %}Inicio{% endblock %}
+{% block subtitle %}Página estática base con estructura moderna{% endblock %}
+
+{% block content %}
+  <!-- Jumbotron conceptual -->
+  <section class="p-4 p-md-5 mb-4 rounded-3 hero">
+    <div class="container-fluid py-2">
+      <h2 class="display-6 fw-semibold mb-2">Bienvenido</h2>
+      <p class="lead mb-0">
+        Este sitio demuestra: Bootstrap, navegación, estáticos, templates y DRY.
+      </p>
+    </div>
+  </section>
+
+  <section class="row g-3">
+    <div class="col-12 col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <h3 class="h5">Beneficios</h3>
+          <ul class="mb-0">
+            {% for b in beneficios %}
+              <li>{{ b }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <h3 class="h5">Navegación</h3>
+          <p class="mb-2">Links internos con <code>{% templatetag openblock %} url {% templatetag closeblock %}</code></p>
+          <a class="btn btn-primary" href="{% url 'web:contacto' %}">Ir a Contacto</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
